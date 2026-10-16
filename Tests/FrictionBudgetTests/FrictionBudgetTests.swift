@@ -102,6 +102,20 @@ final class ScenarioTests: XCTestCase {
         XCTAssertEqual(summary.byKind.map(\.count), [1, 1, 1, 1, 1, 1])
     }
 
+    func testDraftViolationsMatchTheArticle() {
+        let fails = SampleScenario.gate().rows(for: SampleScenario.agentDraft).compactMap { row -> [Violation]? in
+            if case .fail(let violations) = row.verdict { return violations } else { return nil }
+        }
+        XCTAssertEqual(fails, [
+            [.stuckCreation("image-1")],
+            [.cancelLeftResidue],
+            [.tooManyInputs(used: 5, limit: 3)],
+            [.slowFirstResult(seconds: 2.6, limit: 1.0)],
+            [.irreversible("page 3")],
+            [.notHittable("Done")],
+        ])
+    }
+
     func testDraftFailuresAreTheExpectedJourneys() {
         let decision = SampleScenario.gate().decide(SampleScenario.agentDraft)
         XCTAssertEqual(decision, .blocked(
