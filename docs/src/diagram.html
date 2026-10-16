@@ -1,0 +1,49 @@
+<html><head><style>
+*{box-sizing:border-box;margin:0}body{width:1600px;height:940px;background:#ffffff;font-family:-apple-system,"Helvetica Neue",Inter,Arial,sans-serif;color:#0f172a;padding:56px 64px}
+h2{font-size:40px;font-weight:800;letter-spacing:-.5px}
+.lanes{display:flex;gap:36px;margin-top:34px}
+.lane{flex:1;border-radius:20px;padding:28px 30px}
+.a{background:#f1f5f9;border:2px solid #cbd5e1}.b{background:#eff6ff;border:2px solid #93c5fd}
+.lane h3{font-size:27px;margin-bottom:16px}
+.row{display:flex;justify-content:space-between;align-items:center;font-size:22px;padding:11px 0;border-bottom:1px solid #e2e8f0}
+.row:last-child{border-bottom:none}
+.y{color:#15803d;font-weight:700}.n{color:#94a3b8;font-weight:700}.x{color:#b91c1c;font-weight:700}
+.flow{display:flex;align-items:center;gap:12px;margin-top:40px}
+.box{flex:1;border-radius:16px;padding:18px 16px;font-size:20px;line-height:1.3;text-align:center;font-weight:600;min-height:112px;display:flex;align-items:center;justify-content:center}
+.s1{background:#e0e7ff}.s2{background:#f1f5f9}.s3{background:#dbeafe}.s4{background:#fee2e2}.s5{background:#fef3c7}.s6{background:#dcfce7}
+.arr{font-size:34px;color:#64748b;font-weight:700}
+.cap{font-size:19px;color:#475569;margin-top:16px}
+</style></head><body>
+<h2>A screenshot shows where the user ended up. A trace shows what it cost them to get there.</h2>
+<div class="lanes">
+ <div class="lane a"><h3>Screenshot check (how agents usually verify)</h3>
+  <div class="row">Goal visible on the final frame<span class="y">sees it</span></div>
+  <div class="row">Clipped controls, default size only<span class="y">sees it</span></div>
+  <div class="row">Number of inputs to reach the goal<span class="n">blind</span></div>
+  <div class="row">Time to first result at 3× content<span class="n">blind</span></div>
+  <div class="row">Can the placed image be moved?<span class="n">blind</span></div>
+  <div class="row">What Cancel left behind<span class="n">blind</span></div>
+  <div class="row">Undo after a destructive action<span class="n">blind</span></div>
+  <div class="row">Split View + large text<span class="n">blind</span></div>
+ </div>
+ <div class="lane b"><h3>Interaction trace + friction budget</h3>
+  <div class="row">insert-image: image-1 stuck after placing<span class="x">reachability</span></div>
+  <div class="row">redact-cancel: box left on the page<span class="x">cancel</span></div>
+  <div class="row">find-dark-mode: 5 inputs, budget 3<span class="x">inputs</span></div>
+  <div class="row">open-large: page 1 at 2.6 s, budget 1.0 s<span class="x">latency</span></div>
+  <div class="row">delete-page: no undo<span class="x">undo</span></div>
+  <div class="row">sign-compact: Done not hittable<span class="x">layout</span></div>
+  <div class="row">highlight, comment, rotate-page<span class="y">within budget</span></div>
+  <div class="row">share: within budget, still needs a person<span style="color:#b45309;font-weight:700">human gate</span></div>
+ </div>
+</div>
+<div class="flow">
+ <div class="box s1">Journey + budget<br>written by the lead</div><div class="arr">→</div>
+ <div class="box s2">Claude builds<br>the feature</div><div class="arr">→</div>
+ <div class="box s3">UI test plays the<br>journey, records a trace</div><div class="arr">→</div>
+ <div class="box s4">FrictionCheck<br>lists violations</div><div class="arr">→</div>
+ <div class="box s5">A person answers<br>"is this pleasant?"</div><div class="arr">→</div>
+ <div class="box s6">Ship</div>
+</div>
+<div class="cap">Violations go back to the agent as the next prompt. Constructed example: ten hand-written traces for a small iOS PDF-markup app.</div>
+</body></html>

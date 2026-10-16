@@ -1,0 +1,20 @@
+<html><head><style>
+*{box-sizing:border-box;margin:0}body{width:1200px;height:600px;background:#0b1220;font-family:-apple-system,"Helvetica Neue",Inter,Arial,sans-serif;padding:46px 52px;color:#e2e8f0}
+.t{font-size:30px;font-weight:800;color:#f8fafc}.s{font-size:19px;color:#94a3b8;margin-top:6px}
+pre{margin-top:26px;background:#111a2e;border-radius:16px;padding:26px 30px;font:22px/1.5 "SF Mono",Menlo,Consolas,monospace;color:#cbd5e1;white-space:pre}
+.k{color:#c084fc}.ty{color:#5eead4}.st{color:#fca5a5}.nu{color:#fcd34d}.c{color:#64748b}
+</style></head><body>
+<div class="t">"Make it intuitive" isn't checkable. This is.</div>
+<div class="s">FrictionBudget: a user journey as acceptance criteria a coding agent can be measured against</div>
+<pre><span class="k">let</span> journey = <span class="ty">Journey</span>(id: <span class="st">"insert-image"</span>,
+                      goal: <span class="st">"Insert a photo, then move it where it belongs"</span>,
+                      budget: <span class="ty">Budget</span>(maxInputs: <span class="nu">5</span>,
+                                     everyCreationReachable: <span class="k">true</span>))
+
+<span class="c">// trace: hand-written to model the agent's first build
+// (in a real pipeline, a UI test records it)</span>
+<span class="k">let</span> violations = <span class="ty">FrictionCheck</span>.violations(of: journey, in: trace)
+<span class="c">// agent draft: [.stuckCreation("image-1")]</span>
+<span class="c">// "image-1 can't be selected or moved after it's placed"</span>
+<span class="c">// Screenshot check on the same trace: pass</span></pre>
+</body></html>
