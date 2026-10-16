@@ -4,7 +4,7 @@
 
 Coding agents usually verify UI by looking at a final screenshot. Users judge it by trying to get something done. FrictionBudget turns "make it intuitive" into checkable limits: inputs to task, time to first result at 3× content, whether everything you create can be reached again, whether Cancel leaves the document untouched, whether destructive actions have an undo, and whether required controls are hittable in the journey's environment (Split View, large text).
 
-Article: (added after publish)
+Article: [My Screenshot Check Passed 10 of 10 iOS UI Journeys. A Friction Budget Failed 6.](https://medium.com/@er.rajatlakhina/my-screenshot-check-passed-10-of-10-ios-ui-journeys-a-friction-budget-failed-6-74fe82a02298) (Medium)
 
 Inspired by Niels Mündler, [LLMs still cannot detect bad UX](https://blog.nielstron.de/2026/10/08/the-remaining-shortcomings-of-coding-agents/) (8 Oct 2026).
 
