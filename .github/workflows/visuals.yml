@@ -31,6 +31,7 @@ jobs:
           render header 1600,840
           render diagram 1600,940
           render code 1200,600
+          render simulator 1600,1000
           ls -la docs
       - name: Commit visuals if they changed
         run: |
